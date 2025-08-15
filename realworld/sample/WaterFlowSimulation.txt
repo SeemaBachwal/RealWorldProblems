@@ -1,0 +1,25 @@
+import java.util.*;
+
+public static int[][] waterFlow(int[][] terrain, int startX, int startY) {
+    int n = terrain.length, m = terrain[0].length;
+    int[][] time = new int[n][m];
+    for (int[] row : time) Arrays.fill(row, -1);
+    Queue<int[]> queue = new LinkedList<>();
+    queue.offer(new int[] {startX, startY});
+    time[startX][startY] = 0;
+    int[] dx = {-1,0,1,0}, dy = {0,1,0,-1};
+
+    while (!queue.isEmpty()) {
+        int[] cell = queue.poll();
+        int x = cell[0], y = cell[1];
+        for (int dir = 0; dir < 4; dir++) {
+            int nx = x + dx[dir], ny = y + dy[dir];
+            if (nx >= 0 && nx < n && ny >= 0 && ny < m &&
+                terrain[nx][ny] <= terrain[x][y] && time[nx][ny] == -1) {
+                time[nx][ny] = time[x][y] + 1;
+                queue.offer(new int[] {nx, ny});
+            }
+        }
+    }
+    return time;
+}

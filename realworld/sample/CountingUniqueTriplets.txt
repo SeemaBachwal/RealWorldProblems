@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class UniqueTripletsCounter {
+    private TreeMap<Integer, Integer> freqMap = new TreeMap<>();
+    private int diff;
+
+    public UniqueTripletsCounter(int diff) { this.diff = diff; }
+
+    public void add(int x) { freqMap.put(x, freqMap.getOrDefault(x, 0) + 1); }
+
+    public void remove(int x) {
+        if (freqMap.containsKey(x)) {
+            if (freqMap.get(x) == 1) freqMap.remove(x);
+            else freqMap.put(x, freqMap.get(x) - 1);
+        }
+    }
+
+    public int countTriplets() {
+        int count = 0;
+        for (int b : freqMap.keySet()) {
+            int a = b + diff, c = b - diff;
+            if (freqMap.containsKey(a) && freqMap.containsKey(c)) {
+                count++;
+            }
+        }
+        return count;
+    }
+}
+
+// Example usage:
+// UniqueTripletsCounter counter = new UniqueTripletsCounter(diff);
+// counter.add(x) or counter.remove(x), after each query call counter.countTriplets()

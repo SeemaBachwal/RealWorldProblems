@@ -1,0 +1,65 @@
+1. Array String Manipulation
+Problem:
+Given an array of strings, for each string:
+
+If its length is even, convert the whole string to lowercase.
+
+If its length is odd, change each character to its next alphabet letter, with 'z' wrapping to 'a' (the same for uppercase: 'Z' to 'A'). Non-alphabetic characters remain unchanged.
+
+Explanation:
+This question tests your ability to manipulate both arrays and individual strings.
+
+Even length: The transformation is straightforward—you use a string method to convert to lowercase.
+
+Odd length: Iterate through each character, check if it's an alphabet letter, and switch it to the next letter, taking care to wrap 'z'→'a'. This involves both string traversal and understanding character encoding (or using Java's char arithmetic).
+
+Why it's asked: This assesses your fluency with array traversal, conditionals based on string properties, and practice with character manipulation. Fast, correct string handling under pressure is vital in many Visa software problems.
+
+2. Digit String Reduction
+Problem:
+Given a string of digits, repeatedly replace sequences of consecutive identical digits with their summed value (as a new number) until no such sequences remain.
+
+Explanation:
+
+You scan the string for runs of the same digit. Add up the value (e.g., "666" → 6+6+6=18, so replace with "18"). After you process the whole string, check if any further reduction is possible.
+
+Repeat the process until the string no longer has consecutive equal digits.
+
+Edge cases: Single digits, no runs, multi-digit sums, and very large input.
+
+Why it's asked:
+It checks your understanding of string parsing, grouping, and recursive or repeated processing—a common scenario in parsing and data normalization for transactional data.
+
+3. Water Flow Simulation (2D Array)
+Problem:
+Given a 2D grid ("terrain map") and starting coordinates, simulate water flow from the start to adjacent cells—water can only flow to a cell if its height is less than or equal to the current cell. Record and return the minimum step/time it takes to reach each cell; if a cell can't be reached, mark as -1.
+
+Explanation:
+
+This is a Breadth-First Search (BFS) simulation.
+
+You use a queue to "spread" water from the start cell, only moving to valid neighbors (up, down, left, right) whose heights meet the criteria and haven't been visited yet.
+
+Each time water moves, increment the step count.
+
+Mark unreachable cells as -1.
+
+Why it's asked:
+Graphs and grids are frequent in Visa's work, especially for fraud patterns (nets of transactions), logistical flows, and simulation. BFS is standard for minimum-steps questions.
+
+4. Counting Unique Triplets
+Problem:
+You're given an initially empty array, and queries of the form "+x" (add x) or "-x" (remove x). After each query, count the number of unique triplets (a, b, c) such that a - b = b - c = diff (with a, b, c all distinct and present in the array).
+
+Explanation:
+
+You need to dynamically update a data structure (like a multiset or frequency map) as elements are added/removed.
+
+After each update, check for triplets:
+
+For each value, check if both value - diff and value + diff exist in the current set.
+
+Efficient implementation is important so the solution is not too slow as queries grow.
+
+Why it's asked:
+Dynamic data structures and counting unique tuples with a fixed relation is common in fraud detection, transaction grouping, and financial pattern recognition—a good real-world coding test.
