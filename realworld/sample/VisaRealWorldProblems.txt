@@ -1,0 +1,119 @@
+1. Array Grouping Problem
+
+Problem:
+You have an integer array. Partition it into two lists:
+
+List A: even numbers in ascending order
+
+List B: odd numbers in descending order
+Then combine them with all elements of List A first, then List B.
+
+*********************************************************************
+
+2. Queue ID-Check Timing Problem
+
+Problem:
+At a security gate:
+
+Check takes 5 minutes per person.
+
+Queue can have max length maxQueueLen.
+
+Given arrival times (minutes after opening), find the time last person enters.
+
+Restating the Problem
+
+We have:
+
+Arrival times (in minutes from the gate opening).
+Security check takes 5 minutes per person.
+The queue can only hold maxQueueLen people at any time (including the one being checked).
+People arrive in order given by the array.
+If a person arrives and the queue is full, they must wait until a spot is free (i.e., the check finishes for someone).
+
+We need to find:
+The time (in minutes) when the last person finishes entering.
+
+Example 1
+
+Input:
+
+arrivals = [0, 0, 3, 5, 9, 10]
+maxQueueLen = 3
+
+Check takes 5 minutes per person.
+
+
+Step-by-step Simulation - below is for person finish time
+Time 0:
+
+Person1 arrives (queue: 1) ✅ enters queue
+
+Person2 arrives (queue: 2) ✅ enters queue
+
+Start processing Person1 (takes until 5).
+
+Time 3:
+
+Person3 arrives (queue: 3) ✅ enters queue
+
+Queue now full.
+
+Time 5:
+
+Person1 done ✅ queue size: 2
+
+Person4 arrives at time 5 (queue: 3) ✅ enters queue
+
+Start processing Person2 (will finish at 10).
+
+Time 9:
+
+Person5 arrives (queue: FULL = 3) ❌ must wait
+They wait until time 10 when Person2 finishes.
+
+Time 10:
+
+Person2 done ✅ queue size: 2
+
+Person5 joins queue (size now 3)
+
+Start processing Person3 (finishes at 15).
+
+Time 10:
+
+Person6 arrives at time 10, but queue is full. ❌ must wait until time 15.
+
+Time 15:
+
+Person3 done ✅ queue size: 2
+
+Person6 joins queue (size now 3)
+
+Start processing Person4 (finishes at 20).
+
+Time 20:
+
+Person4 done ✅ queue size: 2
+
+Start processing Person5 (finishes at 25).
+
+Time 25:
+
+Person5 done ✅ queue size: 1
+
+Start processing Person6 (finishes at 30).
+
+Time 30:
+
+Person6 done — last person done at 30 minutes.
+
+✅ Output: 30
+
+*********************************************************************
+
+3. One-Swap Pairs Problem
+
+Problem:
+You are given two equal-length arrays A and B.
+Count how many pairs (i, j) need at most one swap of elements in A to match B.
